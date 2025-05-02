@@ -1,0 +1,223 @@
+/* Custom styles for Vigo Digital Nomad Community */
+
+/* General styles */
+body {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  background: url("../images/background.png") no-repeat center top;
+  background-size: cover;
+  position: relative;
+}
+
+/* Create a wrapper to ensure the content is long enough for scrolling */
+.page-wrapper {
+  min-height: 300vh;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Full height sections */
+.section-full {
+  min-height: 100vh;
+  padding: 80px 0;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: transparent;
+  transition: transform 0.3s ease;
+  box-shadow: none;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 300;
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 10px 15px !important;
+  font-size: 2rem;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Headings */
+h1, h2 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 10rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+h2 {
+  font-size: 6rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+/* Links styling */
+.link-list {
+  margin-top: 20px;
+}
+
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 5px !important;
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.list-group-item a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+/* Footer */
+footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+}
+
+.heart {
+  color: #ff4d4d;
+  font-size: 1.2em;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Text styling */
+p {
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  font-size: 1.3rem;
+}
+
+p.lead {
+  font-size: 1.6rem;
+  font-weight: 300;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
+}
+
+/* Icon styling */
+i.fab, i.fas {
+  font-size: 1.2rem;
+}
+
+/* About section specific styling */
+#about .row {
+  justify-content: flex-start !important;
+}
+
+#about .col-md-8 {
+  text-align: left;
+}
+
+/* Join section specific styling */
+#join .row {
+  justify-content: flex-end !important;
+}
+
+#join .col-md-8 {
+  text-align: left;
+}
+
+#join h2 {
+  text-align: right;
+}
+
+#join .content-box {
+  background-color: transparent;
+  box-shadow: none;
+  margin-left: auto;
+}
+
+/* Home section specific styling */
+#home .heading-container {
+  background-color: transparent;
+  display: inline-block;
+  padding: 20px;
+  line-height: 0.9;
+}
+
+#home .main-title {
+  font-size: 18rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+#home .subtitle {
+  font-size: 4.2rem;
+  font-weight: 400;
+  margin-top: 0;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 3.5rem;
+  }
+  
+  .nav-link {
+    font-size: 1.5rem;
+  }
+
+  .section-full {
+    padding: 60px 0;
+  }
+  
+  #home .main-title {
+    font-size: 9rem;
+  }
+
+  #home .subtitle {
+    font-size: 2.5rem;
+  }
+  
+  #about .col-md-8,
+  #join .col-md-8 {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 15px;
+  }
+
+  #join .col-md-8 {
+    margin-top: 50px;
+  }
+}
