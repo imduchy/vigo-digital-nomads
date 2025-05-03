@@ -1,6 +1,6 @@
 # Vigo Digital Nomad and Exapt Community
 
-A simple static website for the Vigo Digital Nomad and Exapt Community, built with Bootstrap and ready to be hosted on GitHub Pages.
+A simple static website for the Vigo Digital Nomad and Exapt Community, built with Bootstrap and hosted on GitHub Pages.
 
 ## License
 

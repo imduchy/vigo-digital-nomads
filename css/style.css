@@ -11,7 +11,6 @@ body {
   position: relative;
 }
 
-/* Create a wrapper to ensure the content is long enough for scrolling */
 .page-wrapper {
   min-height: 300vh;
 }
@@ -48,7 +47,7 @@ html {
 }
 
 /* Headings */
-h1, h2 {
+h1, h2, h3 {
   font-weight: 700;
 }
 
@@ -66,54 +65,15 @@ h2 {
   color: #fff;
 }
 
-/* Links styling */
-.link-list {
-  margin-top: 20px;
-}
-
-.list-group-item {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  margin-bottom: 10px;
-  border-radius: 5px !important;
-  transition: all 0.3s ease;
-}
-
-.list-group-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-3px);
-}
-
-.list-group-item a {
+h3 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-  font-size: 1.3rem;
-  font-weight: 300;
-}
-
-/* Footer */
-footer {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 300;
-}
-
-.heart {
-  color: #ff4d4d;
-  font-size: 1.2em;
-  animation: heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
 }
 
 /* Text styling */
-p {
+p, ul li {
   font-weight: 300;
   line-height: 1.8;
   margin-bottom: 20px;
@@ -127,12 +87,81 @@ p.lead {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
 }
 
+/* List styling */
+ul:not(.list-group) {
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+ul:not(.list-group) li {
+  margin-bottom: 10px;
+}
+
+/* Custom list styling for right-aligned text */
+.custom-list {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.text-end.custom-list li {
+  text-align: right;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
 /* Icon styling */
 i.fab, i.fas {
   font-size: 1.2rem;
 }
 
-/* About section specific styling */
+/* Social icons styling */
+.social-icons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.social-icon-large {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon-large:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.social-icon-large i {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon-large span {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.social-icon-large:hover i {
+  transform: scale(1.2);
+}
+
+/* Section specific styling */
 #about .row {
   justify-content: flex-start !important;
 }
@@ -141,23 +170,12 @@ i.fab, i.fas {
   text-align: left;
 }
 
-/* Join section specific styling */
-#join .row {
+#get-in-touch .row {
   justify-content: flex-end !important;
 }
 
-#join .col-md-8 {
-  text-align: left;
-}
-
-#join h2 {
+#get-in-touch h2 {
   text-align: right;
-}
-
-#join .content-box {
-  background-color: transparent;
-  box-shadow: none;
-  margin-left: auto;
 }
 
 /* Home section specific styling */
@@ -184,6 +202,37 @@ i.fab, i.fas {
   color: #fff;
 }
 
+/* Footer */
+footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+}
+
+.heart {
+  color: #ff4d4d;
+  font-size: 1.2em;
+  animation: heartbeat 1.5s infinite;
+  display: inline-block;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   h1 {
@@ -192,6 +241,10 @@ i.fab, i.fas {
 
   h2 {
     font-size: 3.5rem;
+  }
+  
+  h3 {
+    font-size: 2.5rem;
   }
   
   .nav-link {
@@ -211,13 +264,30 @@ i.fab, i.fas {
   }
   
   #about .col-md-8,
-  #join .col-md-8 {
+  #get-in-touch .col-md-8 {
     margin-left: 0;
     margin-right: 0;
     padding: 0 15px;
   }
 
-  #join .col-md-8 {
+  #get-in-touch .col-md-8 {
     margin-top: 50px;
+  }
+  
+  .social-icons-container {
+    flex-direction: column;
+  }
+  
+  .social-icon-large {
+    width: 100%;
+    margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .social-icon-large i {
+    margin-bottom: 0;
+    margin-right: 15px;
+    font-size: 2rem;
   }
 }
