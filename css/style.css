@@ -202,6 +202,39 @@ i.fab, i.fas {
   color: #fff;
 }
 
+/* Connect button */
+.connect-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.8rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.connect-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.connect-button i {
+  margin-right: 10px;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.connect-button:hover i {
+  transform: scale(1.2);
+}
+
 /* Footer */
 footer {
   background-color: rgba(0, 0, 0, 0.8);
@@ -261,6 +294,15 @@ footer a:hover {
 
   #home .subtitle {
     font-size: 2.5rem;
+  }
+  
+  .connect-button {
+    font-size: 1.4rem;
+    padding: 12px 25px;
+  }
+  
+  .connect-button i {
+    font-size: 1.4rem;
   }
   
   #about .col-md-8,
