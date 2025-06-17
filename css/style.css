@@ -271,8 +271,8 @@ footer a:hover {
   /* Adjust the background image for better mobile viewing */
   body {
     background-position: center center;
-    background-size: 200% auto; /* Zoom out the background image */
-    background-attachment: fixed; /* Keep the background fixed while scrolling */
+    background-size: auto 100%; /* Show more horizontally while covering full height */
+    background-attachment: scroll; /* Prevent background attachment issues on mobile */
   }
 
   h1 {
