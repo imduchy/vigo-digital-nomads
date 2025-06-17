@@ -272,7 +272,7 @@ footer a:hover {
   body {
     background-position: center center;
     background-size: auto 100%; /* Show more horizontally while covering full height */
-    background-attachment: scroll; /* Prevent background attachment issues on mobile */
+    background-attachment: fixed; /* Fixed background on mobile */
   }
 
   h1 {
