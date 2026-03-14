@@ -325,6 +325,7 @@
        Octopus — shared styles
     ============================================== */
     .octopus { cursor: pointer; }
+    .octopus img { width: 100%; height: auto; display: block; }
 
     /* Pose 1: Hero peeking */
     .octopus--hero {
@@ -353,13 +354,9 @@
       z-index: 2;
       filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
       transition: transform 0.35s ease;
+      animation: gentleFloat 3.5s ease-in-out infinite;
     }
     .octopus--community:hover { transform: translateY(-8px) rotate(-4deg); }
-
-    .wave-arm {
-      transform-origin: 28% 80%;
-      animation: waveArm 2.2s ease-in-out infinite;
-    }
 
     /* Pose 3: Footer peek */
     .octopus--footer {
@@ -668,6 +665,12 @@
       50%       { transform: translateY(-5px); }
     }
 
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33%       { transform: translateY(-8px) rotate(4deg); }
+      66%       { transform: translateY(-4px) rotate(-2deg); }
+    }
+
     @keyframes waveArm {
       0%, 100% { transform: rotate(0deg); }
       30%       { transform: rotate(-22deg); }
@@ -750,60 +753,9 @@
       </div>
     </div>
 
-    <!-- Octopus Pose 1: Peeking from behind the wave -->
-    <div class="octopus octopus--hero" aria-hidden="true" title="👋">
-      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <!-- Left tentacle gripping the edge -->
-        <path d="M 74 112
-                 C 62 118 44 124 30 138
-                 C 22 146 32 152 44 144
-                 C 56 136 64 124 70 116"
-              fill="#E07A5F"/>
-        <!-- Left tentacle suckers -->
-        <circle cx="46" cy="142" r="4"   fill="#F5A088" opacity="0.7"/>
-        <circle cx="62" cy="131" r="3.5" fill="#F5A088" opacity="0.7"/>
-        <circle cx="70" cy="120" r="3"   fill="#F5A088" opacity="0.6"/>
-
-        <!-- Right tentacle gripping the edge -->
-        <path d="M 126 112
-                 C 138 118 156 124 170 138
-                 C 178 146 168 152 156 144
-                 C 144 136 136 124 130 116"
-              fill="#E07A5F"/>
-        <!-- Right tentacle suckers -->
-        <circle cx="154" cy="142" r="4"   fill="#F5A088" opacity="0.7"/>
-        <circle cx="138" cy="131" r="3.5" fill="#F5A088" opacity="0.7"/>
-        <circle cx="130" cy="120" r="3"   fill="#F5A088" opacity="0.6"/>
-
-        <!-- Body dome -->
-        <ellipse cx="100" cy="78" rx="58" ry="64" fill="#E07A5F"/>
-
-        <!-- Body highlight -->
-        <ellipse cx="82"  cy="54" rx="26" ry="23" fill="#F5A088" opacity="0.4"/>
-
-        <!-- Texture spots -->
-        <circle cx="116" cy="90"  r="6"   fill="#C86040" opacity="0.22"/>
-        <circle cx="98"  cy="100" r="4.5" fill="#C86040" opacity="0.18"/>
-        <circle cx="118" cy="70"  r="4"   fill="#C86040" opacity="0.18"/>
-
-        <!-- Left eye -->
-        <circle cx="72"  cy="70" r="17" fill="white"/>
-        <circle cx="76"  cy="74" r="10" fill="#1B4965"/>
-        <circle cx="80"  cy="69" r="4.5"fill="white"/>
-
-        <!-- Right eye -->
-        <circle cx="128" cy="70" r="17" fill="white"/>
-        <circle cx="132" cy="74" r="10" fill="#1B4965"/>
-        <circle cx="136" cy="69" r="4.5"fill="white"/>
-
-        <!-- Rosy cheeks -->
-        <ellipse cx="55"  cy="88" rx="11" ry="7" fill="#FF8080" opacity="0.18"/>
-        <ellipse cx="145" cy="88" rx="11" ry="7" fill="#FF8080" opacity="0.18"/>
-
-        <!-- Smile -->
-        <path d="M 86 90 Q 100 102 114 90"
-              fill="none" stroke="#C86040" stroke-width="3" stroke-linecap="round"/>
-      </svg>
+    <!-- Octopus icon -->
+    <div class="octopus octopus--hero" aria-hidden="true">
+      <img src="images/octopus.png" alt="" />
     </div>
 
     <!-- Wave divider -->
@@ -915,60 +867,9 @@
         </div>
       </div>
 
-      <!-- Octopus Pose 2: Waving from corner -->
-      <div class="octopus octopus--community reveal" aria-hidden="true" title="👋">
-        <svg viewBox="0 0 140 190" xmlns="http://www.w3.org/2000/svg" fill="none">
-          <!-- Waving tentacle (animated) -->
-          <g class="wave-arm">
-            <path d="M 82 75
-                     C 96 52 116 36 128 14
-                     C 134 4 124 -3 116 6
-                     C 106 18 94 38 84 60"
-                  fill="#E07A5F"/>
-            <!-- Suckers on waving arm -->
-            <circle cx="125" cy="12"  r="3.5" fill="#F5A088" opacity="0.7"/>
-            <circle cx="113" cy="28"  r="3"   fill="#F5A088" opacity="0.7"/>
-            <circle cx="99"  cy="44"  r="3"   fill="#F5A088" opacity="0.6"/>
-          </g>
-
-          <!-- Bottom-right tentacle curling -->
-          <path d="M 92 110
-                   C 108 116 122 128 132 145
-                   C 138 154 130 162 120 154
-                   C 112 147 106 133 96 120"
-                fill="#E07A5F"/>
-          <!-- Suckers -->
-          <circle cx="128" cy="150" r="3.5" fill="#F5A088" opacity="0.7"/>
-          <circle cx="114" cy="136" r="3"   fill="#F5A088" opacity="0.6"/>
-
-          <!-- Body -->
-          <ellipse cx="72" cy="100" rx="56" ry="62" fill="#E07A5F"/>
-
-          <!-- Highlight -->
-          <ellipse cx="55" cy="76" rx="24" ry="22" fill="#F5A088" opacity="0.38"/>
-
-          <!-- Texture spots -->
-          <circle cx="88"  cy="114" r="5.5" fill="#C86040" opacity="0.2"/>
-          <circle cx="70"  cy="124" r="4"   fill="#C86040" opacity="0.17"/>
-
-          <!-- Left eye -->
-          <circle cx="48"  cy="92" r="15" fill="white"/>
-          <circle cx="52"  cy="96" r="9"  fill="#1B4965"/>
-          <circle cx="56"  cy="91" r="4"  fill="white"/>
-
-          <!-- Right eye -->
-          <circle cx="96"  cy="92" r="15" fill="white"/>
-          <circle cx="100" cy="96" r="9"  fill="#1B4965"/>
-          <circle cx="104" cy="91" r="4"  fill="white"/>
-
-          <!-- Cheeks -->
-          <ellipse cx="34"  cy="108" rx="10" ry="6" fill="#FF8080" opacity="0.17"/>
-          <ellipse cx="110" cy="108" rx="10" ry="6" fill="#FF8080" opacity="0.17"/>
-
-          <!-- Smile -->
-          <path d="M 60 110 Q 72 120 84 110"
-                fill="none" stroke="#C86040" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
+      <!-- Octopus icon -->
+      <div class="octopus octopus--community reveal" aria-hidden="true">
+        <img src="images/octopus.png" alt="" />
       </div>
 
     </div>
@@ -1057,51 +958,9 @@
   <footer class="footer" role="contentinfo">
     <div class="container">
 
-      <!-- Octopus Pose 3: Peeking up from footer edge -->
-      <div class="octopus octopus--footer" aria-hidden="true" title="👀">
-        <svg viewBox="0 0 110 76" xmlns="http://www.w3.org/2000/svg" fill="none">
-          <!-- Left tiny tentacle tip curling over -->
-          <path d="M 16 76
-                   C 10 66 8 55 16 50
-                   C 22 46 26 54 20 60
-                   C 17 64 15 70 16 76 Z"
-                fill="#E07A5F"/>
-          <!-- Left tentacle sucker -->
-          <circle cx="19" cy="54" r="2.5" fill="#F5A088" opacity="0.65"/>
-
-          <!-- Right tiny tentacle tip -->
-          <path d="M 94 76
-                   C 100 66 102 55 94 50
-                   C 88 46 84 54 90 60
-                   C 93 64 95 70 94 76 Z"
-                fill="#E07A5F"/>
-          <!-- Right tentacle sucker -->
-          <circle cx="91" cy="54" r="2.5" fill="#F5A088" opacity="0.65"/>
-
-          <!-- Head dome (top portion, peeking up) -->
-          <ellipse cx="55" cy="82" rx="44" ry="58" fill="#E07A5F"/>
-
-          <!-- Highlight -->
-          <ellipse cx="41" cy="54" rx="18" ry="16" fill="#F5A088" opacity="0.38"/>
-
-          <!-- Left eye -->
-          <circle cx="36" cy="56" r="13" fill="white"/>
-          <circle cx="39" cy="60" r="8"  fill="#1B4965"/>
-          <circle cx="43" cy="55" r="3.5"fill="white"/>
-
-          <!-- Right eye -->
-          <circle cx="74" cy="56" r="13" fill="white"/>
-          <circle cx="77" cy="60" r="8"  fill="#1B4965"/>
-          <circle cx="81" cy="55" r="3.5"fill="white"/>
-
-          <!-- Cheeks -->
-          <ellipse cx="22" cy="68" rx="8" ry="5" fill="#FF8080" opacity="0.18"/>
-          <ellipse cx="88" cy="68" rx="8" ry="5" fill="#FF8080" opacity="0.18"/>
-
-          <!-- Smile -->
-          <path d="M 45 70 Q 55 79 65 70"
-                fill="none" stroke="#C86040" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+      <!-- Tentacles icon -->
+      <div class="octopus octopus--footer" aria-hidden="true">
+        <img src="images/octopus 2.png" alt="" />
       </div>
 
       <p class="footer__text">
