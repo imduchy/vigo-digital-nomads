@@ -322,55 +322,68 @@
     .hero__wave svg { display: block; }
 
     /* ==============================================
-       Octopus — shared styles
+       Octopus icons — shared styles
     ============================================== */
-    .octopus { cursor: pointer; }
+    .octopus {
+      cursor: pointer;
+      display: block;
+      /* Preserve transparency & give slight sticker depth */
+      filter: drop-shadow(0 4px 12px rgba(27,73,101,0.18));
+      /* Prevent drag on click */
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+    .octopus img { width: 100%; height: auto; display: block; pointer-events: none; }
 
-    /* Pose 1: Hero peeking */
+    /* --- Pose 1: Hero — full octopus, floating --- */
     .octopus--hero {
       position: absolute;
-      bottom: 28px;
-      right: clamp(16px, 5vw, 80px);
-      width: clamp(90px, 14vw, 160px);
+      bottom: 32px;
+      right: clamp(20px, 5vw, 80px);
+      width: clamp(100px, 15vw, 190px);
       z-index: 3;
       opacity: 0;
-      animation: fadeUp 0.8s ease 1.2s forwards;
-      filter: drop-shadow(0 4px 14px rgba(92,86,77,0.22));
-      transition: transform 0.35s ease;
+      /* Fade in, then hand off to float loop */
+      animation: fadeUp 0.7s ease 1.2s forwards;
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
-    .octopus--hero:hover { transform: translateY(-10px) rotate(4deg); }
+    /* After fade-in completes, add the float loop via a wrapper class added by JS */
+    .octopus--hero.is-visible {
+      animation: octoFloat 3.5s ease-in-out infinite;
+    }
+    .octopus--hero:hover {
+      transform: translateY(-12px) rotate(5deg) scale(1.06);
+      filter: drop-shadow(0 8px 20px rgba(27,73,101,0.28));
+    }
 
-    /* Idle sway */
-    .idle-sway { animation: idleSway 4s ease-in-out infinite; }
-    .octopus--hero { animation: fadeUp 0.8s ease 1.2s forwards, idleSway 4s ease-in-out 2s infinite; }
-
-    /* Pose 2: Community waving */
+    /* --- Pose 2: Community — tentacle, waving --- */
     .octopus--community {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      width: clamp(80px, 12vw, 150px);
+      bottom: var(--space-lg);
+      right: clamp(16px, 4vw, 56px);
+      width: clamp(70px, 11vw, 140px);
       z-index: 2;
-      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
-      transition: transform 0.35s ease;
+      /* Tip of tentacle points up; rotate so it waves outward from corner */
+      transform-origin: bottom center;
+      animation: octoWave 2s ease-in-out infinite;
+      transition: filter 0.3s ease;
     }
-    .octopus--community:hover { transform: translateY(-8px) rotate(-4deg); }
-
-    .wave-arm {
-      transform-origin: 28% 80%;
-      animation: waveArm 2.2s ease-in-out infinite;
+    .octopus--community:hover {
+      filter: drop-shadow(0 6px 18px rgba(163,212,240,0.35));
     }
 
-    /* Pose 3: Footer peek */
+    /* --- Pose 3: Footer — multi-tentacle, bobbing --- */
     .octopus--footer {
-      display: block;
       margin: 0 auto var(--space-md);
-      width: clamp(52px, 8vw, 68px);
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
-      transition: transform 0.35s ease;
-      animation: idleSway 4s ease-in-out infinite;
+      width: clamp(64px, 9vw, 88px);
+      filter: drop-shadow(0 3px 10px rgba(163,212,240,0.25));
+      animation: octoBob 2.8s ease-in-out infinite;
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
-    .octopus--footer:hover { transform: translateY(-8px); }
+    .octopus--footer:hover {
+      transform: translateY(-8px) scale(1.08);
+      filter: drop-shadow(0 6px 16px rgba(163,212,240,0.4));
+    }
 
     /* ==============================================
        About
@@ -638,6 +651,17 @@
 
     .footer__heart { color: var(--coral); }
 
+    .footer__attribution {
+      margin-top: var(--space-xs);
+      font-size: 0.75rem;
+      color: rgba(163,212,240,0.35);
+    }
+    .footer__attribution a {
+      color: rgba(163,212,240,0.45);
+      text-decoration: none;
+    }
+    .footer__attribution a:hover { color: rgba(163,212,240,0.7); }
+
     /* ==============================================
        Scroll reveal
     ============================================== */
@@ -663,15 +687,25 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes idleSway {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-5px); }
+    /* Hero octopus: gentle float with tiny tilt */
+    @keyframes octoFloat {
+      0%, 100% { transform: translateY(0)    rotate(0deg); }
+      40%       { transform: translateY(-9px) rotate(-2deg); }
+      70%       { transform: translateY(-5px) rotate(2deg); }
     }
 
-    @keyframes waveArm {
-      0%, 100% { transform: rotate(0deg); }
-      30%       { transform: rotate(-22deg); }
-      65%       { transform: rotate(16deg); }
+    /* Community tentacle: rocking wave */
+    @keyframes octoWave {
+      0%, 100% { transform: rotate(0deg)   translateY(0); }
+      25%       { transform: rotate(-18deg) translateY(-4px); }
+      55%       { transform: rotate(14deg)  translateY(-2px); }
+      80%       { transform: rotate(-8deg)  translateY(-3px); }
+    }
+
+    /* Footer multi-tentacle: soft bob + micro-scale */
+    @keyframes octoBob {
+      0%, 100% { transform: translateY(0)    scale(1); }
+      45%       { transform: translateY(-6px) scale(1.04); }
     }
 
     /* ==============================================
@@ -750,60 +784,13 @@
       </div>
     </div>
 
-    <!-- Octopus Pose 1: Peeking from behind the wave -->
-    <div class="octopus octopus--hero" aria-hidden="true" title="👋">
-      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <!-- Left tentacle gripping the edge -->
-        <path d="M 74 112
-                 C 62 118 44 124 30 138
-                 C 22 146 32 152 44 144
-                 C 56 136 64 124 70 116"
-              fill="#E07A5F"/>
-        <!-- Left tentacle suckers -->
-        <circle cx="46" cy="142" r="4"   fill="#F5A088" opacity="0.7"/>
-        <circle cx="62" cy="131" r="3.5" fill="#F5A088" opacity="0.7"/>
-        <circle cx="70" cy="120" r="3"   fill="#F5A088" opacity="0.6"/>
-
-        <!-- Right tentacle gripping the edge -->
-        <path d="M 126 112
-                 C 138 118 156 124 170 138
-                 C 178 146 168 152 156 144
-                 C 144 136 136 124 130 116"
-              fill="#E07A5F"/>
-        <!-- Right tentacle suckers -->
-        <circle cx="154" cy="142" r="4"   fill="#F5A088" opacity="0.7"/>
-        <circle cx="138" cy="131" r="3.5" fill="#F5A088" opacity="0.7"/>
-        <circle cx="130" cy="120" r="3"   fill="#F5A088" opacity="0.6"/>
-
-        <!-- Body dome -->
-        <ellipse cx="100" cy="78" rx="58" ry="64" fill="#E07A5F"/>
-
-        <!-- Body highlight -->
-        <ellipse cx="82"  cy="54" rx="26" ry="23" fill="#F5A088" opacity="0.4"/>
-
-        <!-- Texture spots -->
-        <circle cx="116" cy="90"  r="6"   fill="#C86040" opacity="0.22"/>
-        <circle cx="98"  cy="100" r="4.5" fill="#C86040" opacity="0.18"/>
-        <circle cx="118" cy="70"  r="4"   fill="#C86040" opacity="0.18"/>
-
-        <!-- Left eye -->
-        <circle cx="72"  cy="70" r="17" fill="white"/>
-        <circle cx="76"  cy="74" r="10" fill="#1B4965"/>
-        <circle cx="80"  cy="69" r="4.5"fill="white"/>
-
-        <!-- Right eye -->
-        <circle cx="128" cy="70" r="17" fill="white"/>
-        <circle cx="132" cy="74" r="10" fill="#1B4965"/>
-        <circle cx="136" cy="69" r="4.5"fill="white"/>
-
-        <!-- Rosy cheeks -->
-        <ellipse cx="55"  cy="88" rx="11" ry="7" fill="#FF8080" opacity="0.18"/>
-        <ellipse cx="145" cy="88" rx="11" ry="7" fill="#FF8080" opacity="0.18"/>
-
-        <!-- Smile -->
-        <path d="M 86 90 Q 100 102 114 90"
-              fill="none" stroke="#C86040" stroke-width="3" stroke-linecap="round"/>
-      </svg>
+    <!-- Octopus Pose 1: full character, floating in bottom-right -->
+    <div class="octopus octopus--hero" aria-hidden="true">
+      <img src="images/octopus-full.png"
+           alt=""
+           width="190"
+           height="190"
+           draggable="false" />
     </div>
 
     <!-- Wave divider -->
@@ -915,60 +902,13 @@
         </div>
       </div>
 
-      <!-- Octopus Pose 2: Waving from corner -->
-      <div class="octopus octopus--community reveal" aria-hidden="true" title="👋">
-        <svg viewBox="0 0 140 190" xmlns="http://www.w3.org/2000/svg" fill="none">
-          <!-- Waving tentacle (animated) -->
-          <g class="wave-arm">
-            <path d="M 82 75
-                     C 96 52 116 36 128 14
-                     C 134 4 124 -3 116 6
-                     C 106 18 94 38 84 60"
-                  fill="#E07A5F"/>
-            <!-- Suckers on waving arm -->
-            <circle cx="125" cy="12"  r="3.5" fill="#F5A088" opacity="0.7"/>
-            <circle cx="113" cy="28"  r="3"   fill="#F5A088" opacity="0.7"/>
-            <circle cx="99"  cy="44"  r="3"   fill="#F5A088" opacity="0.6"/>
-          </g>
-
-          <!-- Bottom-right tentacle curling -->
-          <path d="M 92 110
-                   C 108 116 122 128 132 145
-                   C 138 154 130 162 120 154
-                   C 112 147 106 133 96 120"
-                fill="#E07A5F"/>
-          <!-- Suckers -->
-          <circle cx="128" cy="150" r="3.5" fill="#F5A088" opacity="0.7"/>
-          <circle cx="114" cy="136" r="3"   fill="#F5A088" opacity="0.6"/>
-
-          <!-- Body -->
-          <ellipse cx="72" cy="100" rx="56" ry="62" fill="#E07A5F"/>
-
-          <!-- Highlight -->
-          <ellipse cx="55" cy="76" rx="24" ry="22" fill="#F5A088" opacity="0.38"/>
-
-          <!-- Texture spots -->
-          <circle cx="88"  cy="114" r="5.5" fill="#C86040" opacity="0.2"/>
-          <circle cx="70"  cy="124" r="4"   fill="#C86040" opacity="0.17"/>
-
-          <!-- Left eye -->
-          <circle cx="48"  cy="92" r="15" fill="white"/>
-          <circle cx="52"  cy="96" r="9"  fill="#1B4965"/>
-          <circle cx="56"  cy="91" r="4"  fill="white"/>
-
-          <!-- Right eye -->
-          <circle cx="96"  cy="92" r="15" fill="white"/>
-          <circle cx="100" cy="96" r="9"  fill="#1B4965"/>
-          <circle cx="104" cy="91" r="4"  fill="white"/>
-
-          <!-- Cheeks -->
-          <ellipse cx="34"  cy="108" rx="10" ry="6" fill="#FF8080" opacity="0.17"/>
-          <ellipse cx="110" cy="108" rx="10" ry="6" fill="#FF8080" opacity="0.17"/>
-
-          <!-- Smile -->
-          <path d="M 60 110 Q 72 120 84 110"
-                fill="none" stroke="#C86040" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
+      <!-- Octopus Pose 2: tentacle, waving from corner -->
+      <div class="octopus octopus--community reveal" aria-hidden="true">
+        <img src="images/octopus-tentacle.png"
+             alt=""
+             width="140"
+             height="140"
+             draggable="false" />
       </div>
 
     </div>
@@ -1057,56 +997,21 @@
   <footer class="footer" role="contentinfo">
     <div class="container">
 
-      <!-- Octopus Pose 3: Peeking up from footer edge -->
-      <div class="octopus octopus--footer" aria-hidden="true" title="👀">
-        <svg viewBox="0 0 110 76" xmlns="http://www.w3.org/2000/svg" fill="none">
-          <!-- Left tiny tentacle tip curling over -->
-          <path d="M 16 76
-                   C 10 66 8 55 16 50
-                   C 22 46 26 54 20 60
-                   C 17 64 15 70 16 76 Z"
-                fill="#E07A5F"/>
-          <!-- Left tentacle sucker -->
-          <circle cx="19" cy="54" r="2.5" fill="#F5A088" opacity="0.65"/>
-
-          <!-- Right tiny tentacle tip -->
-          <path d="M 94 76
-                   C 100 66 102 55 94 50
-                   C 88 46 84 54 90 60
-                   C 93 64 95 70 94 76 Z"
-                fill="#E07A5F"/>
-          <!-- Right tentacle sucker -->
-          <circle cx="91" cy="54" r="2.5" fill="#F5A088" opacity="0.65"/>
-
-          <!-- Head dome (top portion, peeking up) -->
-          <ellipse cx="55" cy="82" rx="44" ry="58" fill="#E07A5F"/>
-
-          <!-- Highlight -->
-          <ellipse cx="41" cy="54" rx="18" ry="16" fill="#F5A088" opacity="0.38"/>
-
-          <!-- Left eye -->
-          <circle cx="36" cy="56" r="13" fill="white"/>
-          <circle cx="39" cy="60" r="8"  fill="#1B4965"/>
-          <circle cx="43" cy="55" r="3.5"fill="white"/>
-
-          <!-- Right eye -->
-          <circle cx="74" cy="56" r="13" fill="white"/>
-          <circle cx="77" cy="60" r="8"  fill="#1B4965"/>
-          <circle cx="81" cy="55" r="3.5"fill="white"/>
-
-          <!-- Cheeks -->
-          <ellipse cx="22" cy="68" rx="8" ry="5" fill="#FF8080" opacity="0.18"/>
-          <ellipse cx="88" cy="68" rx="8" ry="5" fill="#FF8080" opacity="0.18"/>
-
-          <!-- Smile -->
-          <path d="M 45 70 Q 55 79 65 70"
-                fill="none" stroke="#C86040" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+      <!-- Octopus Pose 3: multi-tentacle, bobbing above footer text -->
+      <div class="octopus octopus--footer" aria-hidden="true">
+        <img src="images/octopus-multi.png"
+             alt=""
+             width="88"
+             height="88"
+             draggable="false" />
       </div>
 
       <p class="footer__text">
         Made with <span class="footer__heart">♥</span> in Vigo by
         <a href="https://www.linkedin.com/in/imduchy" target="_blank" rel="noopener noreferrer">Jakub</a>
+      </p>
+      <p class="footer__attribution">
+        Icons by <a href="https://www.flaticon.com" target="_blank" rel="noopener noreferrer">Flaticon</a>
       </p>
     </div>
   </footer>
@@ -1149,6 +1054,18 @@
       }, { threshold: 0.15 });
 
       els.forEach(function (el) { observer.observe(el); });
+    }());
+
+    // Hero octopus: once fade-in animation ends, hand off to float loop
+    (function () {
+      var hero = document.querySelector('.octopus--hero');
+      if (!hero) return;
+      hero.addEventListener('animationend', function onEnd(e) {
+        if (e.animationName === 'fadeUp') {
+          hero.classList.add('is-visible');
+          hero.removeEventListener('animationend', onEnd);
+        }
+      });
     }());
   </script>
 
