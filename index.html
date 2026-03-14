@@ -322,54 +322,6 @@
     .hero__wave svg { display: block; }
 
     /* ==============================================
-       Octopus — shared styles
-    ============================================== */
-    .octopus { cursor: pointer; }
-    .octopus img { width: 100%; height: auto; display: block; }
-
-    /* Pose 1: Hero peeking */
-    .octopus--hero {
-      position: absolute;
-      bottom: 28px;
-      right: clamp(16px, 5vw, 80px);
-      width: clamp(90px, 14vw, 160px);
-      z-index: 3;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 1.2s forwards;
-      filter: drop-shadow(0 4px 14px rgba(92,86,77,0.22));
-      transition: transform 0.35s ease;
-    }
-    .octopus--hero:hover { transform: translateY(-10px) rotate(4deg); }
-
-    /* Idle sway */
-    .idle-sway { animation: idleSway 4s ease-in-out infinite; }
-    .octopus--hero { animation: fadeUp 0.8s ease 1.2s forwards, idleSway 4s ease-in-out 2s infinite; }
-
-    /* Pose 2: Community waving */
-    .octopus--community {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: clamp(80px, 12vw, 150px);
-      z-index: 2;
-      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
-      transition: transform 0.35s ease;
-      animation: gentleFloat 3.5s ease-in-out infinite;
-    }
-    .octopus--community:hover { transform: translateY(-8px) rotate(-4deg); }
-
-    /* Pose 3: Footer peek */
-    .octopus--footer {
-      display: block;
-      margin: 0 auto var(--space-md);
-      width: clamp(52px, 8vw, 68px);
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
-      transition: transform 0.35s ease;
-      animation: idleSway 4s ease-in-out infinite;
-    }
-    .octopus--footer:hover { transform: translateY(-8px); }
-
-    /* ==============================================
        About
     ============================================== */
     .about {
@@ -660,23 +612,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes idleSway {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-5px); }
-    }
-
-    @keyframes gentleFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      33%       { transform: translateY(-8px) rotate(4deg); }
-      66%       { transform: translateY(-4px) rotate(-2deg); }
-    }
-
-    @keyframes waveArm {
-      0%, 100% { transform: rotate(0deg); }
-      30%       { transform: rotate(-22deg); }
-      65%       { transform: rotate(16deg); }
-    }
-
     /* ==============================================
        Responsive
     ============================================== */
@@ -702,8 +637,6 @@
       .photo-sm.hide-mobile { display: none; }
 
       .values-grid { grid-template-columns: 1fr; }
-
-      .octopus--community { width: clamp(70px, 18vw, 100px); }
     }
 
     @media (max-width: 480px) {
@@ -751,11 +684,6 @@
       <div class="hero__cta">
         <a href="#community" class="btn btn--coral">Join us →</a>
       </div>
-    </div>
-
-    <!-- Octopus icon -->
-    <div class="octopus octopus--hero" aria-hidden="true">
-      <img src="images/octopus.png" alt="" />
     </div>
 
     <!-- Wave divider -->
@@ -867,11 +795,6 @@
         </div>
       </div>
 
-      <!-- Octopus icon -->
-      <div class="octopus octopus--community reveal" aria-hidden="true">
-        <img src="images/octopus.png" alt="" />
-      </div>
-
     </div>
   </section>
 
@@ -957,11 +880,6 @@
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer" role="contentinfo">
     <div class="container">
-
-      <!-- Tentacles icon -->
-      <div class="octopus octopus--footer" aria-hidden="true">
-        <img src="images/octopus 2.png" alt="" />
-      </div>
 
       <p class="footer__text">
         Made with <span class="footer__heart">♥</span> in Vigo by
