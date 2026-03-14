@@ -247,7 +247,7 @@
     }
     .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .btn--coral { background: var(--coral); color: var(--white); }
-    .btn--whatsapp { background: #25D366; color: #fff; }
+    .btn--whatsapp { background: var(--coral); color: var(--white); }
 
     /* ==============================================
        Hero
@@ -330,10 +330,7 @@
     }
 
     .about__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-xl);
-      align-items: start;
+      max-width: 700px;
     }
 
     .about__title {
@@ -404,30 +401,6 @@
       font-size: 0.875rem;
       color: var(--granite-light);
       line-height: 1.55;
-    }
-
-    /* Photo collage */
-    .photo-collage {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 220px 220px;
-      gap: 12px;
-    }
-
-    .photo-tall {
-      grid-row: 1 / 3;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .photo-sm {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-
-    .photo-placeholder {
-      width: 100%;
-      height: 100%;
     }
 
     /* ==============================================
@@ -626,16 +599,6 @@
       .nav__links  { display: none; }
       .nav__hamburger { display: flex; }
 
-      .about__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
-
-      .photo-collage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 160px;
-        grid-auto-rows: 0;
-      }
-      .photo-tall { grid-row: auto; }
-      .photo-sm.hide-mobile { display: none; }
-
       .values-grid { grid-template-columns: 1fr; }
     }
 
@@ -752,19 +715,6 @@
           </div>
         </div>
 
-        <!-- Right: photo collage -->
-        <div class="photo-collage reveal">
-          <div class="photo-tall">
-            <div class="photo-placeholder" style="background: var(--ria-light); height: 100%;"></div>
-          </div>
-          <div class="photo-sm">
-            <div class="photo-placeholder" style="background: var(--arena-deep); height: 100%;"></div>
-          </div>
-          <div class="photo-sm hide-mobile">
-            <div class="photo-placeholder" style="background: rgba(74,124,89,0.28); height: 100%;"></div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -851,24 +801,7 @@
               <a href="https://maps.app.goo.gl/cYt7uAYYaQkwEbUi8"
                  target="_blank" rel="noopener noreferrer"
                  class="place-name">O'Guiri</a>
-              <span class="place-note">Specialty coffee</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Adventures -->
-        <div class="rec-card reveal">
-          <div class="rec-card__icon" style="background: rgba(74,124,89,0.12);">🥾</div>
-          <h3 class="rec-card__title">Adventures</h3>
-          <p class="rec-card__desc">Hikes, beaches, and day trips worth the journey.</p>
-          <div class="place-list">
-            <div class="place-item">
-              <span class="place-name">Cíes Islands</span>
-              <span class="place-note">Caribbean of Galicia</span>
-            </div>
-            <div class="place-item">
-              <span class="place-name">Senda Litoral</span>
-              <span class="place-note">Coastal walk, stunning views</span>
+              <span class="place-note">Specialty coffee · laptop-friendly</span>
             </div>
           </div>
         </div>
