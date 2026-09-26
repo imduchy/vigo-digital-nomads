@@ -539,6 +539,79 @@
     }
 
     /* ==============================================
+       Member Projects
+    ============================================== */
+    .members {
+      background: var(--white);
+      padding: var(--space-3xl) 0;
+    }
+
+    .members__header {
+      max-width: 700px;
+      margin-bottom: var(--space-xl);
+    }
+
+    .members__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+      color: var(--atlantic);
+      margin-bottom: var(--space-xs);
+    }
+
+    .members__subtitle {
+      font-size: 1.0625rem;
+      color: var(--granite-light);
+    }
+
+    .member-card {
+      max-width: 700px;
+      background: var(--arena);
+      border: 1px solid rgba(92,86,77,0.1);
+      border-left: 4px solid var(--pino);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+    }
+
+    .member-card__tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pino);
+      background: rgba(74,124,89,0.12);
+      border-radius: var(--radius-pill);
+      padding: 4px 12px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .member-card__title {
+      font-family: var(--font-display);
+      font-size: 1.625rem;
+      color: var(--atlantic);
+      margin-bottom: var(--space-sm);
+    }
+
+    .member-card__body {
+      font-size: 1.0625rem;
+      color: var(--granite);
+      line-height: 1.75;
+      margin-bottom: var(--space-md);
+    }
+
+    .member-card__note {
+      font-size: 0.8125rem;
+      font-style: italic;
+      color: var(--granite-light);
+      margin-top: var(--space-md);
+    }
+
+    @media (max-width: 480px) {
+      .member-card { padding: var(--space-md); }
+      .member-card .btn { white-space: normal; padding: 14px 24px; }
+    }
+
+    /* ==============================================
        Footer
     ============================================== */
     .footer {
@@ -619,6 +692,7 @@
         <li><a href="#about">Our Story</a></li>
         <li><a href="#community">Community</a></li>
         <li><a href="#local-tips">Local Tips</a></li>
+        <li><a href="#member-projects">Member Projects</a></li>
       </ul>
 
       <button class="nav__hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -633,6 +707,7 @@
         <li><a href="#about">Our Story</a></li>
         <li><a href="#community">Community</a></li>
         <li><a href="#local-tips">Local Tips</a></li>
+        <li><a href="#member-projects">Member Projects</a></li>
       </ul>
     </div>
   </nav>
@@ -807,6 +882,36 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== MEMBER PROJECTS ===================== -->
+  <section id="member-projects" class="members" aria-labelledby="members-heading">
+    <div class="container">
+
+      <div class="members__header reveal">
+        <span class="section-label">From our members</span>
+        <h2 class="members__title" id="members-heading">Projects by people in the group</h2>
+        <p class="members__subtitle">
+          Cool stuff people from the group are working on.
+        </p>
+      </div>
+
+      <article class="member-card reveal" aria-labelledby="galicia-life-heading">
+        <span class="member-card__tag">Member project</span>
+        <h3 class="member-card__title" id="galicia-life-heading">Thinking about making Vigo home?</h3>
+        <p class="member-card__body">
+          The Galicia Life helps internationally minded people turn an interest in Galicia into a real relocation plan, from understanding where to live and finding the right home to settling in, connecting locally, and navigating the practical side of starting life here.
+        </p>
+        <a href="https://thegalicialife.com"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn btn--coral">Explore The Galicia&nbsp;Life&nbsp;→</a>
+        <p class="member-card__note">
+          Run by a community member, not by Vigo Nomads.
+        </p>
+      </article>
+
     </div>
   </section>
 
